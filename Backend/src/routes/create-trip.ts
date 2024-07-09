@@ -1,5 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
+
 import dayjs from "dayjs";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
@@ -73,8 +74,20 @@ export async function createTrip(app: FastifyInstance) {
           name: owner_name,
           address: owner_email,
         },
-        subject: "Trip created successfully! 🎉 - email de test",
-        html: "<p>Hello, this is a test email from Trip Planner</p>",
+        subject: `Confirme sua viagem para ${destination} `,
+        html: `
+        <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
+          <p>Você solicitou a criação de uma viagem para <strong>${destination}</strong> nas datas de <strong>12 de julho 2024</strong> até <strong>25 de julho 2024</strong>.</p>
+          <p></p>
+          <p>Para confirmar sua viagem, clique no link abaixo:</p>
+          <p></p>
+          <p>
+            <a href="https://tripplanner.com/trips/">Confirmar viagem</a>
+          </p>
+          <p></p>
+          <p>Caso você não saiba do que se trata esse e-mail, apenas ignore esse e-mail.</p>
+        </div>
+      `.trim(),
       });
 
       console.log(nodemailer.getTestMessageUrl(message));
