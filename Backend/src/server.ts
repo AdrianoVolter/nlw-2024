@@ -1,4 +1,5 @@
 import fastify from "fastify";
+import cors from "@fastify/cors";
 import { createTrip } from "./routes/create-trip";
 import {
   validatorCompiler,
@@ -7,6 +8,12 @@ import {
 import { confirmTrip } from "./routes/confirm-trip";
 
 const app = fastify();
+
+app.register(cors , {
+  origin: "http://localhost:3000",
+});
+ 
+
 
 // Add schema validator and serializer
 app.setValidatorCompiler(validatorCompiler);
