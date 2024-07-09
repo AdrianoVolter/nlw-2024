@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Trip {
-  id           String   @id @default(cuid())
+  id           String   @id @default(uuid())
   destination  String
   start_at     DateTime
   end_at       DateTime
@@ -24,7 +24,7 @@ model Trip {
 }
 
 model Participant {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
 
   name         String?
   email        String

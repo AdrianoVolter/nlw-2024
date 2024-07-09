@@ -70,6 +70,8 @@ export async function createTrip(app: FastifyInstance) {
       const formattedStartDate = dayjs(start_at).format("LL");
       const formattedEndDate = dayjs(end_at).format("LL");
 
+      const confimationLink = `http:localhost:3333/trips/${trip.id}/confirm`;
+
       const mail = await getMailClient();
 
       const message = await mail.sendMail({
@@ -89,7 +91,7 @@ export async function createTrip(app: FastifyInstance) {
           <p>Para confirmar sua viagem, clique no link abaixo:</p>
           <p></p>
           <p>
-            <a href="https://tripplanner.com/trips/">Confirmar viagem</a>
+            <a href="${confimationLink}">Confirmar viagem</a>
           </p>
           <p></p>
           <p>Caso você não saiba do que se trata esse e-mail, apenas ignore esse e-mail.</p>
@@ -99,8 +101,6 @@ export async function createTrip(app: FastifyInstance) {
 
       console.log(nodemailer.getTestMessageUrl(message));
       return {
-        statusCode: 200,
-        body: trip,
         tripId: trip.id,
       };
     }
