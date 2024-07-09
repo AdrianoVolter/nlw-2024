@@ -11,10 +11,12 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^20.14.10",
+    "prisma": "^5.16.1",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@prisma/client": "^5.16.1",
     "fastify": "^4.28.1"
   }
 }
