@@ -9,13 +9,10 @@ import { confirmTrip } from "./routes/confirm-trip";
 
 const app = fastify();
 
-app.register(cors , {
+app.register(cors, {
   origin: "http://localhost:3000",
 });
- 
 
-
-// Add schema validator and serializer
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
