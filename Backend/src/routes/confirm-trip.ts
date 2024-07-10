@@ -56,7 +56,7 @@ export async function confirmTrip(app: FastifyInstance) {
 
       await Promise.all(
         trip.participants.map(async (participant) => {
-          const confimationLink = `http:localhost:3333/trips/${trip.id}/confirm/${participant.id}`;
+          const confimationLink = `http:localhost:3333/participant/${participant.id}/confirm`;
           const message = await mail.sendMail({
             from: {
               name: "Trip Planner",
