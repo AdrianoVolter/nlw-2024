@@ -1,74 +1,82 @@
-# Backend Project
+# API Trip Plann.er
 
-This project is a backend service built using Fastify, Zod, and Prisma, with TypeScript for type safety. It includes custom error handling and validation mechanisms.
+API para gerenciamento de viagens onde os usuários podem criar viagens, convidar pessoas e receber confirmações por email. A API também permite a criação de atividades diárias durante a viagem.
 
-## Table of Contents
+## Tecnologias Utilizadas
 
-- [Installation](#installation)
+- **Framework**: Fastify
+- **Banco de Dados**: Prisma
+- **Validação de Dados**: Zod
+- **Linguagem**: TypeScript
+
+## Tabela de Conteúdos
+
+- [Instalação](#instalação)
 - [Scripts](#scripts)
-- [Dependencies](#dependencies)
-- [Development Dependencies](#development-dependencies)
-- [Error Handling](#error-handling)
-- [Validation](#validation)
+- [Dependências](#dependências)
+- [Dependências de Desenvolvimento](#dependências-de-desenvolvimento)
+- [Tratamento de Erros](#tratamento-de-erros)
+- [Validação](#validação)
+- [Autor](#autor)
 
-## Installation
+## Instalação
 
-1. Clone the repository:
+1. Clone o repositório:
 
     ```bash
     git clone https://github.com/AdrianoVolter/nlw-2024
     cd backend
     ```
 
-2. Install the dependencies:
+2. Instale as dependências:
 
     ```bash
     npm install
     ```
 
-3. Create a `.env` file in the root directory and add your environment variables.
+3. Crie um arquivo `.env` na raiz do diretório e adicione suas variáveis de ambiente necessárias.
 
 ## Scripts
 
-- **dev**: Runs the development server with automatic restarts on file changes.
+- **dev**: Inicia o servidor de desenvolvimento com reinicialização automática ao detectar mudanças nos arquivos.
 
     ```bash
     npm run dev
     ```
 
-## Dependencies
+## Dependências
 
-- `@fastify/cors`: CORS support for Fastify.
-- `@prisma/client`: Prisma Client for database interaction.
-- `dayjs`: Lightweight date library for parsing, validating, manipulating, and formatting dates.
-- `fastify`: Web framework for Node.js.
-- `fastify-type-provider-zod`: Zod type provider for Fastify.
-- `nodemailer`: Email sending library.
-- `zod`: TypeScript-first schema declaration and validation library.
+- `@fastify/cors`: Suporte CORS para Fastify.
+- `@prisma/client`: Cliente Prisma para interação com o banco de dados.
+- `dayjs`: Biblioteca leve para manipulação de datas.
+- `fastify`: Framework web para Node.js.
+- `fastify-type-provider-zod`: Provedor de tipos Zod para Fastify.
+- `nodemailer`: Biblioteca para envio de emails.
+- `zod`: Biblioteca para declaração e validação de esquemas TypeScript-first.
 
-## Development Dependencies
+## Dependências de Desenvolvimento
 
-- `@types/node`: TypeScript definitions for Node.js.
-- `@types/nodemailer`: TypeScript definitions for Nodemailer.
-- `prisma`: Prisma CLI for database schema management.
-- `tsx`: TypeScript execution environment for Node.js.
-- `typescript`: TypeScript language support.
+- `@types/node`: Definições TypeScript para Node.js.
+- `@types/nodemailer`: Definições TypeScript para Nodemailer.
+- `prisma`: CLI do Prisma para gerenciamento de esquema de banco de dados.
+- `tsx`: Ambiente de execução TypeScript para Node.js.
+- `typescript`: Suporte à linguagem TypeScript.
 
-## Error Handling
+## Tratamento de Erros
 
-This project uses a custom error handler to manage application errors. The error handler distinguishes between client errors and internal server errors.
+O projeto utiliza um tratador de erros personalizado para gerenciar erros da aplicação, distinguindo entre erros do cliente e erros internos do servidor.
 
-### Client Error
+### Erro do Cliente
 
-Client errors are instances of the `ClientError` class and result in a 400 status code.
+Erros do cliente são instâncias da classe `ClientError` e resultam em um código de status 400.
 
 ```javascript
 export class ClientError extends Error {}
+
 ```
 
-### Error Handler
-
-The error handler is a Fastify plugin that catches errors and sends an appropriate response to the client.
+### Tratador de Erros
+O tratador de erros é um plugin do Fastify que captura erros e envia uma resposta apropriada para o cliente.
 
 ```javascript
 import type { FastifyInstance } from "fastify"
@@ -95,9 +103,8 @@ export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
 }
 ```
 
-### Validation 
-
-This project uses Zod for input validation. Zod is a TypeScript-first schema declaration and validation library.
+### Validação
+O projeto utiliza Zod para validação de entrada. Zod é uma biblioteca de declaração e validação de esquemas TypeScript-first.
 
 ```javascript
 
@@ -122,7 +129,7 @@ export async function createTrip(app: FastifyInstance) {
 })
 ```
 
-## author
+## Autor
 Adriano Volter
 
 Api | Gerenciamento de viagens | Back-end da aplicação desenvolvida durante o NLW Journey da Rocketseat.
