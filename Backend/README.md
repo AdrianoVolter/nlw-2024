@@ -16,7 +16,7 @@ This project is a backend service built using Fastify, Zod, and Prisma, with Typ
 1. Clone the repository:
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/AdrianoVolter/nlw-2024
     cd backend
     ```
 
@@ -95,4 +95,36 @@ export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
 }
 ```
 
-### 
+### Validation 
+
+This project uses Zod for input validation. Zod is a TypeScript-first schema declaration and validation library.
+
+```javascript
+
+//example of a route using zod for validation
+import { z } from "zod"
+
+export async function createTrip(app: FastifyInstance) {
+  app.withTypeProvider<ZodTypeProvider>().post(
+    "/trips",
+    {
+      schema: {
+        body: z.object({
+          destination: z.string().min(4),
+          start_at: z.coerce.date(),
+          end_at: z.coerce.date(),
+          owner_name: z.string().min(4),
+          owner_email: z.string().email(),
+          emails_to_invite: z.array(z.string().email()),
+        }),
+      },
+    },
+})
+```
+
+## author
+Adriano Volter
+
+Api | Gerenciamento de viagens | Back-end da aplicação desenvolvida durante o NLW Journey da Rocketseat.
+
+
