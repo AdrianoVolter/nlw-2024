@@ -34,7 +34,17 @@ API para gerenciamento de viagens onde os usuários podem criar viagens, convida
     npm install
     ```
 
-3. Crie um arquivo `.env` na raiz do diretório e adicione suas variáveis de ambiente necessárias.
+3. Crie um arquivo `.env` na raiz do diretório e adicione suas variáveis de ambiente, use o arquivo `.env.example` como referência.
+
+    ```env
+    DATABASE_URL="file:./dev.db"
+
+    API_BASE_URL="http://localhost:3333"
+
+    WEB_BASE_URL="http://localhost:3000"
+
+    PORT="3333"
+    ```
 
 ## Scripts
 
